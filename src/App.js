@@ -1,10 +1,10 @@
 import './App.css';
+import Body from './components/Body';
+
 
 function App() {
   return (
-    <div className="App">
-   <h1 className='font-bold p-5 m-4 border border-black shadow-lg bg-orange-600 items-center'>Heooo sartjaskl</h1>
-    </div>
+    <Body/>
   );
 }
 

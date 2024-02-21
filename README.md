@@ -19,4 +19,10 @@ create  a header and add the background image and logo
 -Login Form
 -sign up form
 --validation inside the form
+--Routing of App
+--Form validation--useRef Hook
+--what should happen when i click on sign and signup page
+--completed form validation
+
+== now creates form Authentication
 

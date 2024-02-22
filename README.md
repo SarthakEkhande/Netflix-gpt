@@ -23,6 +23,13 @@ create  a header and add the background image and logo
 --Form validation--useRef Hook
 --what should happen when i click on sign and signup page
 --completed form validation
+--UseRef Hook
 
 == now creates form Authentication
+--Firebase setup
+--deploying our app in firebase
+--Now create a signup user in firebase Account
 
+--create a redux store
+--implement signin user Api
+--created our redux store with userslice

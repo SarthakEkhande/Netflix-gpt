@@ -1,13 +1,15 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header'
 import { cheakvaliddata } from '../utils/Validate'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
+import { auth } from '../utils/Firebase';
 
 const Login = () => {
 
   const [isSigninForm,setisSigninForm]=useState(true)
   const [errormessage,seterrormessage]=useState()
 
- const name=useRef(null)
+//  const name=useRef(null)
   const email=useRef(null)
   const password=useRef(null)
 
@@ -18,9 +20,46 @@ const Login = () => {
     console.log(password.current.value);
     
 
-    const message=cheakvaliddata(email.current.value,password.current.value,name.current.value)
+    const message = cheakvaliddata(email.current.value, password.current.value);
+
     console.log(message);
     seterrormessage(message)
+
+    if(message) return
+
+    //sign in/sign up logic
+    if(!isSigninForm){
+      //sign up logic goes here
+      createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    console.log(user);
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    seterrormessage(errorMessage + " "+ errorCode)
+    // ..
+  });
+
+    }
+    else{
+      //sign in logic
+      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    console.log(user);
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    seterrormessage(errorMessage + " "+ errorCode)
+  });
+    }
 
 
 
@@ -41,7 +80,7 @@ const Login = () => {
 
         <form onSubmit={(e)=>e.preventDefault()} className='p-12 bg-black absolute w-3/12 my-32 mx-auto left-0 right-0 text-white rounded-lg bg-opacity-80'>
         <h1 className='font-bold text-3xl py-4'>{isSigninForm ? "Sign In" : "Sign Up" }</h1>
-        {!isSigninForm && <input ref={name} type="text" placeholder='Enter Your Name' className='p-3 my-4 w-full bg-gray-700 rounded-sm'></input>}
+        {!isSigninForm && <input  type="text" placeholder='Enter Your Name' className='p-3 my-4 w-full bg-gray-700 rounded-sm'></input>}
         {!isSigninForm && <input type="number" placeholder='Enter Mobile No' className='p-3 my-4 w-full bg-gray-700 rounded-sm'></input>}
           <input ref={email} type="text" placeholder='Email Address' className='p-3 my-4 w-full bg-gray-700 rounded-sm'></input>
           <input ref={password} type="password" placeholder='password' className='p-3 my-4 w-full bg-gray-700 rounded-sm'></input>

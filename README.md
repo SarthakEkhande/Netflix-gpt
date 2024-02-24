@@ -33,3 +33,8 @@ create  a header and add the background image and logo
 --create a redux store
 --implement signin user Api
 --created our redux store with userslice
+--sign out validation and authentication
+--update profile api call
+
+
+--Build movies -fetch movie from TMDB

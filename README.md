@@ -38,3 +38,25 @@ create  a header and add the background image and logo
 
 
 --Build movies -fetch movie from TMDB
+
+
+BUG Fix--
+sign up user displayname     andprofile picture update
+--if user is not login in redirect with /browse to login page and vice versa
+
+--unsubscrie the onAuthstatechanged callback
+
+
+part 11--
+Adding constant file    to this project
+--always use constants instead by any link
+--make the seperate file
+--Add hardcore value to the conatant file-----very importanat
+
+part 12--
+--Start building our browse page
+--Register to TMDB API
+--crate an App and get access token
+--get data from TMDB now playing movie list api
+
+

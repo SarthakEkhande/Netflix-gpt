@@ -1,26 +1,50 @@
-import { getAuth, signOut } from 'firebase/auth';
-import React from 'react'
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
+import React, { useEffect } from 'react'
 // import { FaUsersGear } from "react-icons/fa6";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { addUser, removeuser } from '../utils/userStore';
 
 
 
 const Header = () => {
   const auth = getAuth();
   const navigate=useNavigate();
+  const dispatch=useDispatch()
 
   const user=useSelector(store=>(store.user))
 
   const handleSignout = () => {
     signOut(auth)
-      .then(() => {
-        navigate('/');
+      .then(() => {   
       })
       .catch((error) => {
         navigate('/error');
       });
   };
+
+  useEffect(()=>{
+    const unsubscribe=onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/auth.user
+          const {uid,email,displayname,photoURL} = user;
+          dispatch(addUser({uid:uid,email:email,displayname:displayname,photoURL:photoURL})) 
+          
+         navigate("/browse")
+          
+        } else {
+          // User is signed out
+          dispatch(removeuser());
+          navigate("/")
+        }
+      });
+
+      //unsubscribe when component unmount
+      return ()=> unsubscribe()
+
+
+},[])
 
   
   return (

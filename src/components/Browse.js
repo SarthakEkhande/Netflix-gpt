@@ -1,27 +1,29 @@
-import React, { useEffect } from 'react'
-import { API_OPTIONS } from '../utils/constants'
 import Header from './Header'
+import useNowplayingmovies from "../hooks/useNowplayingmovies"
+import MainConatainer from './MainConatainer'
+import SecondaryConatiner from './SecondaryConatiner'
 
 const Browse = () => {
-
-  const gerNowplayingmovies=async()=>{
-    const data=await fetch("https://api.themoviedb.org/3/movie/now_playing?page=1",
-    API_OPTIONS
-     )
-     const json=await data.json();
-     console.log((json.results));
-  }
-
-  useEffect(()=>{
-    gerNowplayingmovies()
-    
-         
-  },[])
+  useNowplayingmovies()
+  
   return (
-    <div>
+    <div className=''>
        
        <Header/>
-       <h1 className='font-bold align-middle text-red-500 py-24 text-4xl mx-74 items-center'>You are Successfully Sign in</h1>
+       {/* <h1 className='font-bold align-middle text-red-500 py-24 text-4xl mx-74 items-center'>You are Successfully Sign in</h1> */}
+       <MainConatainer/>
+       <SecondaryConatiner/>
+
+       {/* 
+          maincontiner
+            -video background
+            -video title
+          secondary container
+            -movielist * n
+              -card * n
+
+
+        */}
     </div>
   )
 }

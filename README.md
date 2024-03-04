@@ -60,3 +60,20 @@ part 12--
 --get data from TMDB now playing movie list api
 
 
+--custom hook for nowplayiing videos
+--create movies slice
+--update store with movies data
+--planning for main container and secondary container
+--fetch data for trailer videos
+--update the store with trailer video data
+--embeddeed the youtube video
+--make it autoplayand mute 
+--added tailwind classes to make main container  look awesome
+
+--made secondary component
+--build movie list 
+--build movie card 
+--found out image cdn url
+-- made the browse page amaxzing with tailwind
+--usepopularmovies custom hooks
+--

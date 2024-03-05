@@ -6,10 +6,10 @@ const SecondaryConatiner = () => {
   const movies=useSelector((store)=>store.movies)
   console.log(movies);
   return (
-    <div className='-mt-80 relative z-20 bg-black '>
+    <div className=' bg-black '>
 
     
-    <div className='-mt-52 relative z-20  '>
+    <div className=' mt-0 md:-mt-72 pl-4 md:pl-12 relative z-20  '>
     <MovieList title={"Now playing"} movies={movies.NowPlayingMovies} />
     <MovieList title={"Trending"} movies={movies.NowPlayingMovies} />
     <MovieList title={"Popular"} movies={movies.popularmovies} />

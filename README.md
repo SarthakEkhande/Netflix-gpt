@@ -77,3 +77,13 @@ part 12--
 -- made the browse page amaxzing with tailwind
 --usepopularmovies custom hooks
 --
+
+
+--16--
+
+--GPT search feature
+GPT search page 
+--GPT search bar
+--(**Bonus**)added multi language feature in our app
+
+--Integrate GPT API(get Open Ai key)

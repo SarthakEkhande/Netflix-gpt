@@ -87,3 +87,13 @@ GPT search page
 --(**Bonus**)added multi language feature in our app
 
 --Integrate GPT API(get Open Ai key)
+GPT Search API call
+get Open AI key
+--fetch gpt movies suggestions from tmdb
+--gpt slice
+--added data
+--movielist component to make movie suggestions
+Adding .env file to gitignore
+--memorization
+
+--make our side responsive

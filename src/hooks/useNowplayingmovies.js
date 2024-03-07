@@ -1,5 +1,5 @@
 import  { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { API_OPTIONS } from '../utils/constants'
 import { addNowPlayingMovies } from '../utils/moviesSlice'
 
@@ -8,6 +8,8 @@ const useNowplayingmovies=()=>{
 
     //fetch data from tmdb api and update the store
   const dispatch =useDispatch()
+
+  const nowplayingmovies=useSelector(store=>store.movies.NowPlayingMovies )
 
   const gerNowplayingmovies=async()=>{
     const data=await fetch("https://api.themoviedb.org/3/movie/now_playing?page=1",
@@ -19,7 +21,10 @@ const useNowplayingmovies=()=>{
   }
 
   useEffect(()=>{
-    gerNowplayingmovies()
+    if(!nowplayingmovies){
+      gerNowplayingmovies()
+    }
+  
     
          
   },[])
